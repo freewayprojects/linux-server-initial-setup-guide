@@ -32,9 +32,13 @@ In the server installation the server BIOS clock should have been set correctly.
 
 ### Checking the server datetime clock
 
-{| 
-Debian || Ubuntu || SLES || RH || Centos
-|}
+| Disttribution | Versions |
+| --- | --- |
+|Debian | All versions |
+| Ubuntu | All versions |
+| SLES | All versions |
+| RH | All versions |
+| Centos | All versions |
 
 On most Linux servers the date and time can be checked by running the date command.
 
