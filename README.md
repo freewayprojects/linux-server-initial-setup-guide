@@ -34,7 +34,7 @@ In the server installation the server BIOS clock should have been set correctly.
 
 | Disttribution | Versions |
 | --- | --- |
-|Debian | All versions |
+| Debian | All versions |
 | Ubuntu | All versions |
 | SLES | All versions |
 | RH | All versions |
@@ -51,7 +51,10 @@ If the timezone is not correct then this should be corrected.
 
 ### Correcting timezone
 
-#### Debian
+| Disttribution | Versions |
+| --- | --- |
+| Debian | All versions |
+| Ubuntu | All versions |
 
 ~~~
 # dpkg-reconfigure tzdata
@@ -61,4 +64,11 @@ If the timezone is not correct then this should be corrected.
 
 The tool [Screen](http://www.gnu.org/software/screen/) means that commands can be run under a remote session on the server.  This means that if your connection to the server is lost whilst you are carrying out commands then you can log back in to the server and pick up the session again.  This makes it much safer to carry out tasks remotely such as installing software.
 
-So the first step to carry 
+| Disttribution | Versions |
+| --- | --- |
+| Debian | All versions |
+| Ubuntu | All versions |
+
+~~~
+# apt-get install screen
+~~~
