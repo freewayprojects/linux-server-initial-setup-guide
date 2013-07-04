@@ -9,6 +9,8 @@ So, this guide should be used to pick up from where [Linux Server Installation G
 
 For the purposes of this guide we are going to carry out the initial set up on a server which has the FQDN of server1.example.com
 
+We are going to assume that the initial user account which was set up has a username of 'admin'.
+
 # Prerequisites
 
 The initial Linux server installation should have been completed.  This could be any distribution or version of Linux - this guide is intended to be generic as well as having distribution/version specific code snippets.
@@ -25,6 +27,28 @@ The main points about the server which should already have been set up are:
 Basically, the administrator should be able to login to the server over SSH to carry out the intial setup.  This is normally the point at which a hardware server has been put into a rack or located at its permanent location - or when a VM has been built and is available over a network.
 
 # Setup steps
+
+## Logging into the server as root
+
+After the server has had Linux installed it should be possible to log in over SSH (or from a console) under the initial user account - in our examples this user account has the name 'admin'.
+
+Virtually all of the steps required in the initial setup need to be carried out as the root user.  Therefore it is best to switch the ssh session to the root user.
+
+| Distribution | Versions |
+| --- | --- |
+| Debian | All versions |
+
+    admin@server1:~$ su -
+
+and enter the root user password as set when Debian was installed.
+
+| Distribution | Versions |
+| --- | --- |
+| Ubuntu | All versions |
+
+    admin@server1:~$ sudo su -
+
+and enter the admin user's password.
 
 ## Checking the operating system datetime
 
@@ -121,7 +145,6 @@ If the session is dropped then it can be picked up again with the same command.
 
 It's important to make sure that all the server packages are up-to-date.  This is obviously very dependent on the distribution of Linux used - but effectively all Linux distributions use a system of software and package management.
 
-
 | Disttribution | Versions |
 | --- | --- |
 | Debian | All versions |
@@ -129,21 +152,64 @@ It's important to make sure that all the server packages are up-to-date.  This i
 
 First of all check that the server is set to use the required repositories.  These are set in the file
 
-
     /etc/apt/sources.list
 
-
-Then the packages can be updated with:
-
+Then the packages list can be updated with:
 
     root@server1:~# apt-get update
 
+Before updating all the packages it might be an idea to check exactly what will be updated first by looking at the output from:
 
-which will check the current packages against the repositories.  And then update all packages with:
+    root@server1:~# apt-get -s dist-upgrade | less
 
+And then update all packages with:
 
-  root@server1:~# apt-get dist-upgrade
-
+    root@server1:~# apt-get dist-upgrade
 
 NB - 'dist-upgrade' is preferred to 'upgrade' as it should handle dependencies better.
 
+## Check server reboots
+
+After this initial package update it is a good idea to check that the server reboots OK and that there are no issues with kernels etc.
+
+### Reboot the server
+
+| Disttribution | Versions |
+| --- | --- |
+| Debian | All versions |
+| Ubuntu | All versions |
+
+    root@server1:~# shutdown -r now
+    
+## Testing the hard disks
+
+The server memory should have been tested when the operating system was installed.  At this point it is an idea to test the hard disks.
+
+There are ways of accessing the hard disk diagnostic information from tools such as Smart Tools and HP's ILO system.  These will give you more direct access to information about hardware status.
+
+What we are going to do here is to use bonnie++ to stress test the HDD's and then monitor the kernel log for errors.  If the disks have been pushed hard for a couple of hours and no errors have been reported in kernel.log then this shows the drives are generally working well.
+
+The advantage of this approach is that it can be used with any hardware or disk configuration.  
+
+It should be noted that hard disks should be monitored with more specific tools if possible.
+
+### Test the HDD's
+
+| Disttribution | Versions |
+| --- | --- |
+| Debian | All versions |
+| Ubuntu | All versions |
+
+Install the tool bonnie++
+
+    root@server1:~# apt-get install bonnie++
+	
+Then run the benchmarking test with
+
+    root@server1:~# bonnie++ -d /home/admin -u 1000 -x 200
+	
+Whilst the benchmark test is runnning monitor the output to see if there are any hardware errors with:
+
+    root@server1:~# tail -f /var/log/kern.log
+	
+	
