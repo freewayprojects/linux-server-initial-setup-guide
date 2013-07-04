@@ -28,7 +28,13 @@ Basically, the administrator should be able to login to the server over SSH to c
 
 ## Check the server clock
 
-In the server installation the server BIOS clock should have been set correctly.  It is very important that the server clock is correct as well.  On most Linux servers the date and time can be checked by running the date command.
+In the server installation the server BIOS clock should have been set correctly.  It is very important that the server clock is correct as well.  The package managers, logging tools, certificates etc rely on the server time clock being correct.
+
+### Checking the server datetime clock
+
+#### Debian, Ubuntu, SLES, RH, Centos
+
+On most Linux servers the date and time can be checked by running the date command.
 
 ~~~
 server1admin@server1:~$ date
