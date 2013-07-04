@@ -59,6 +59,14 @@ If the timezone is not correct then this should be corrected.
 # dpkg-reconfigure tzdata
 ~~~
 
+Then follow the onscreen prompts.
+
+### Correcting the server datetime
+
+Obviously, the server BIOS datetime should have bee set correctly during the operating system installation.  This should mean that the time reported by the operating system should be roughly correct and take into account any adjustments such as Britsh Summer Time (BST).
+
+NB - The server BIOS time is normally set to the datetime for a zone and does not change for adjustments such as BST - it is the operating system which adjusts time for these cases.
+
 If the datetime needs 
 
 ##  Install screen
