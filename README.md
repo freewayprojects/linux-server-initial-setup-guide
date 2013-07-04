@@ -83,18 +83,27 @@ If necessary the server datetime can be corrected.
 
 will set the date time to 1:46pm, 4th July, 2013.
 
-##  Install screen
+##  Make Gnu Screen available
 
 The tool [Screen](http://www.gnu.org/software/screen/) means that commands can be run under a remote session on the server.  This means that if your connection to the server is lost whilst you are carrying out commands then you can log back in to the server and pick up the session again.  This makes it much safer to carry out tasks remotely such as installing software.
+
+### Installing screen
 
 | Disttribution | Versions |
 | --- | --- |
 | Debian | All versions |
-| Ubuntu | All versions |
 
 ~~~
 # apt-get install screen
 ~~~
+
+| Disttribution | Versions |
+| --- | --- |
+| Ubuntu | 10.04+ |
+
+Screen is installed by default.
+
+### Using Screen
 
 Once screen is installed a session can be created with:
 
