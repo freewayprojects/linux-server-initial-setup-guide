@@ -34,7 +34,7 @@ In the server installation the server BIOS clock should have been set correctly.
 
 To start with the server datetime should be checked.  On most Linux servers the date and time can be checked by running the date command.
 
-| Disttribution | Versions |
+| Distribution | Versions |
 | --- | --- |
 | Debian | All versions |
 | Ubuntu | All versions |
@@ -51,7 +51,7 @@ Thu Jul  4 13:38:36 BST 2013
 
 If the timezone is not correct then this should be corrected.
 
-| Disttribution | Versions |
+| Distribution | Versions |
 | --- | --- |
 | Debian | All versions |
 | Ubuntu | All versions |
@@ -72,7 +72,7 @@ Later in this set up guide the server will be set up to use internet time server
 
 If necessary the server datetime can be corrected.
 
-| Disttribution | Versions |
+| Distribution | Versions |
 | --- | --- |
 | Debian | All versions |
 | Ubuntu | All versions |
@@ -94,4 +94,16 @@ The tool [Screen](http://www.gnu.org/software/screen/) means that commands can b
 
 ~~~
 # apt-get install screen
+~~~
+
+Once screen is installed a session can be created with:
+
+~~~
+# screen -DR serveradmin1
+~~~
+
+If the session is dropped then it can be picked up again with the same command.
+
+~~~
+# screen -DR serveradmin1
 ~~~
