@@ -19,3 +19,5 @@ The main points about the server which should already have been set up are:
 * Initial administration user created.  This user will be used to login to the server and is separate from the root user.
 * Network address configured.
 * The hostname and domain should be set up so that the server has a FQDN available.
+
+Basically, the administrator should be able to login to the server over SSH to carry out the intial setup.  This is normally the point at which a hardware server has been put into a rack or located at its permanent location - or when a VM has been built and is available over a network.
