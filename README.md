@@ -26,12 +26,13 @@ Basically, the administrator should be able to login to the server over SSH to c
 
 # Setup steps
 
-In the server installation the server BIOS clock should have been set correctly.  It is very important that the server operating system is reporting the correct datetime as well.  The package managers, logging tools, certificates etc rely on the server time clock being correct.
-
 ## Checking the operating system datetime
 
-To start with the server datetime should be checked.  On most Linux servers the date and time can be checked by running the date command.
+In the server installation the server BIOS clock should have been set correctly.  It is very important that the server operating system is reporting the correct datetime and timezone as well.  The package managers, logging tools, certificates etc rely on the server time clock being correct.
 
+### Reading the current datetime
+
+To start with the server datetime should be checked.  On most Linux servers the date and time can be checked by running the date command.
 
 | Disttribution | Versions |
 | --- | --- |
@@ -61,13 +62,26 @@ If the timezone is not correct then this should be corrected.
 
 Then follow the onscreen prompts.
 
-### Correcting the server datetime
+### Changing the server datetime
 
-Obviously, the server BIOS datetime should have bee set correctly during the operating system installation.  This should mean that the time reported by the operating system should be roughly correct and take into account any adjustments such as Britsh Summer Time (BST).
+Obviously, the server BIOS datetime should have been set correctly during the operating system installation.  This should mean that the time reported by the operating system should be roughly correct and take into account any adjustments such as timezone and summer time adjustments.
 
-NB - The server BIOS time is normally set to the datetime for a zone and does not change for adjustments such as BST - it is the operating system which adjusts time for these cases.
+NB - The server BIOS time should be set to UTC.  In Linux it is the operating system which adjusts datetime for time zones and Daylight Saving Time adjustments.
 
-If the datetime needs 
+Later in this set up guide the server will be set up to use internet time servers to keep the server times correct.
+
+If necessary the server datetime can be corrected.
+
+| Disttribution | Versions |
+| --- | --- |
+| Debian | All versions |
+| Ubuntu | All versions |
+
+~~~
+# date 070413462013
+~~~
+
+will set the date time to 1:46pm, 4th July, 2013.
 
 ##  Install screen
 
