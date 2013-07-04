@@ -26,11 +26,12 @@ Basically, the administrator should be able to login to the server over SSH to c
 
 # Setup steps
 
-## Check the server clock
+In the server installation the server BIOS clock should have been set correctly.  It is very important that the server operating system is reporting the correct datetime as well.  The package managers, logging tools, certificates etc rely on the server time clock being correct.
 
-In the server installation the server BIOS clock should have been set correctly.  It is very important that the server clock is correct as well.  The package managers, logging tools, certificates etc rely on the server time clock being correct.
+## Checking the operating system datetime
 
-### Checking the server datetime clock
+To start with the server datetime should be checked.  On most Linux servers the date and time can be checked by running the date command.
+
 
 | Disttribution | Versions |
 | --- | --- |
@@ -40,16 +41,14 @@ In the server installation the server BIOS clock should have been set correctly.
 | RH | All versions |
 | Centos | All versions |
 
-On most Linux servers the date and time can be checked by running the date command.
-
 ~~~
 server1admin@server1:~$ date
 Thu Jul  4 13:38:36 BST 2013
 ~~~
 
-If the timezone is not correct then this should be corrected.
-
 ### Correcting timezone
+
+If the timezone is not correct then this should be corrected.
 
 | Disttribution | Versions |
 | --- | --- |
@@ -59,6 +58,8 @@ If the timezone is not correct then this should be corrected.
 ~~~
 # dpkg-reconfigure tzdata
 ~~~
+
+If the datetime needs 
 
 ##  Install screen
 
