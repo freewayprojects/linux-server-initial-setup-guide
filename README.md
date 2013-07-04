@@ -56,9 +56,9 @@ If the timezone is not correct then this should be corrected.
 | Debian | All versions |
 | Ubuntu | All versions |
 
-~~~
-# dpkg-reconfigure tzdata
-~~~
+
+    # dpkg-reconfigure tzdata
+
 
 Then follow the onscreen prompts.
 
@@ -77,9 +77,9 @@ If necessary the server datetime can be corrected.
 | Debian | All versions |
 | Ubuntu | All versions |
 
-~~~
-# date 070413462013
-~~~
+
+    # date 070413462013
+
 
 will set the date time to 1:46pm, 4th July, 2013.
 
@@ -93,9 +93,9 @@ The tool [Screen](http://www.gnu.org/software/screen/) means that commands can b
 | --- | --- |
 | Debian | All versions |
 
-~~~
-# apt-get install screen
-~~~
+
+    # apt-get install screen
+
 
 | Disttribution | Versions |
 | --- | --- |
@@ -107,15 +107,15 @@ Screen is installed by default.
 
 Once screen is installed a session can be created with:
 
-~~~
-# screen -DR serveradmin1
-~~~
+
+    # screen -DR serveradmin1
+
 
 If the session is dropped then it can be picked up again with the same command.
 
-~~~
-# screen -DR serveradmin1
-~~~
+
+    # screen -DR serveradmin1
+
 
 ## Update packages
 
@@ -129,21 +129,21 @@ It's important to make sure that all the server packages are up-to-date.  This i
 
 First of all check that the server is set to use the required repositories.  These are set in the file
 
-~~~
-/etc/apt/sources.list
-~~~
+
+    /etc/apt/sources.list
+
 
 Then the packages can be updated with:
 
-~~~
-root@server1:~# apt-get update
-~~~
+
+    root@server1:~# apt-get update
+
 
 which will check the current packages against the repositories.  And then update all packages with:
 
-~~~
-root@server1:~# apt-get dist-upgrade
-~~~
+
+  root@server1:~# apt-get dist-upgrade
+
 
 NB - 'dist-upgrade' is preferred to 'upgrade' as it should handle dependencies better.
 
