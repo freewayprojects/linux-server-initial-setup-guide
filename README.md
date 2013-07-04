@@ -116,3 +116,34 @@ If the session is dropped then it can be picked up again with the same command.
 ~~~
 # screen -DR serveradmin1
 ~~~
+
+## Update packages
+
+It's important to make sure that all the server packages are up-to-date.  This is obviously very dependent on the distribution of Linux used - but effectively all Linux distributions use a system of software and package management.
+
+
+| Disttribution | Versions |
+| --- | --- |
+| Debian | All versions |
+| Ubuntu | All versions |
+
+First of all check that the server is set to use the required repositories.  These are set in the file
+
+~~~
+/etc/apt/sources.list
+~~~
+
+Then the packages can be updated with:
+
+~~~
+root@server1:~# apt-get update
+~~~
+
+which will check the current packages against the repositories.  And then update all packages with:
+
+~~~
+root@server1:~# apt-get dist-upgrade
+~~~
+
+NB - 'dist-upgrade' is preferred to 'upgrade' as it should handle dependencies better.
+
