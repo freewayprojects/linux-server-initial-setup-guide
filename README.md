@@ -1,4 +1,4 @@
-linux-server-initial-setup-guide
+Linux Server Initial Setup Guide
 ================================
 
 # Overview
