@@ -275,6 +275,33 @@ The CSV output can then be converted using:
 
     echo "1.96,1.96,devback1,1,1373282064,24G,,521,99,192435,27,106363,15,2691,98,446441,27,1067,43,16,,,,,23295,46,+++++,+++,+++++,+++,+++++,+++,+++++,+++,+++++,+++,16070us,454ms,174ms,14736us,98188us,30739us,5985us,563us,583us,960us,32us,259us" | bon_csv2html > bonnie_output.html
 
+## Configure a time server client
+
+Many of the services on a Linux server require the server datetime clock to be accurate.  To achieve this it is best to set up a client on the server which requests datetime updates from internet time servers.  For ease of use it is recommended that the tool chrony is used for this purpose.
+
+| Disttribution | Versions |
+| --- | --- |
+| Debian | All versions |
+| Ubuntu | All versions |
+
+Install chrony with:
+
+    root@server1:~# apt-get install chrony
+
+After chrony has been installed edit the file
+
+    /etc/chrony.conf
+
+and set the server lines to be 
+
+    server 0.pool.ntp.org
+    server 1.pool.ntp.org
+    server 2.pool.ntp.org
+
+Then restart the chrony server with:
+
+    root@server1:~# /etc/init.d/chrony restart
+
 ## Install an email server
 
 Many of the monitoring tools will report back via email so it is necessary to have an email server installed.
@@ -347,4 +374,122 @@ On Debian and derivatives the easiest way to remove insecure services and client
 
 Once these packages have been installed the admin user will be warned when they are going to install a package which is considered insecure.
 
-### Set up the SSH server
+### Harden the SSH server
+
+The SSH server can be made more secure by ensuring that the root user can not log in with a password.
+
+Also, the accounts which can actually log in to the server can be restricted.
+
+| Disttribution | Versions |
+| --- | --- |
+| Debian | All versions |
+
+To prevent the logging in over ssh as root and to restrict the logins to only the admin user the file 
+
+    /etc/ssh/sshd_config
+
+should be edited and the following lines edited/added:
+
+    PermitRootLogin no
+    AllowUsers admin
+
+The the SSH server should be restarted with:
+
+    root@server1:~# /etc/initi.d/ssh restart
+
+Administration of the server should be carried out by logging in as the admin user and using su to carry out root tasks.
+
+| Disttribution | Versions |
+| --- | --- |
+| Ubuntu | All versions |
+
+Ubuntu uses the sudo system and so the root account does not have the ability to log in to the server by default.  Administration of the server should be carried out by logging in as the admin user and using the sudo command to carry out root tasks.
+
+### Get notifications about package updates
+
+One of the main ways to keep a server secure is to ensure that the server packages are kept up to date.  One way to do this is to get the server to check the package statuses every day and to send out an email if packages need to be updated.
+
+| Disttribution | Versions |
+| --- | --- |
+| Debian | All versions |
+| Ubuntu | All versions |
+
+    root@server1:~# apt-get install cron-apt
+
+In the configuration file the MAILON configuration should be changed to 'upgrade' to make sure email is sent out when packages are available.
+
+Edit the file 
+    
+    /etc/cron-apt/config
+
+and change
+
+    MAILON="error"
+	
+to
+
+    MAILON="upgrade"
+
+### Monitor the log files
+
+The log files on the server should be regularly monitored so problems can be identified.  It is best if an agregation system can be used to summarise the log files for easier interpretation.
+
+| Disttribution | Versions |
+| --- | --- |
+| Debian | All versions |
+| Ubuntu | All versions |
+
+    root@server1:~# apt-get install logwatch
+
+By default logwatch is configured to send daily emails to root which contain a summary of the log files.
+
+### Block malicious attempts to access the server
+
+Attempts to break-in to the server should be monitored and blocked.  This should mainly monitor attempts to log in via SSH but other services should be monitored as well.
+
+There are several tools available for carrying out this task:
+
+* Fail2ban
+* Denyhosts
+* SSHguard
+
+| Disttribution | Versions |
+| --- | --- |
+| Debian | All versions |
+| Ubuntu | All versions |
+
+The tool Fail2ban works well on Debian and Ubuntu and the default configuration works well.
+
+    root@server1:~# apt-get install fail2ban
+
+### Install tools to monitor for rootkits
+
+If a server has had a rootkit been rooted then this is bad news and the server can be considered compromised.  Notification of the rootkit is important however as the system administrator cna take steps to examine the intrusion and transfer services to another server.
+
+There are serveral rootkit monitoring tools available including:
+
+* chkrootkit
+* rkhunter
+
+| Disttribution | Versions |
+| --- | --- |
+| Debian | All versions |
+| Ubuntu | All versions |
+
+Install the tool chkrootkit with:
+
+    root@server1:~# apt-get install chkrootkit
+
+Then in the configuration file
+
+    /etc/chkrootkit.conf
+
+set 
+
+    RUN_DAILY="true"
+	
+Install rkhunter with:
+
+    root@server1:~# apt-get install rkhunter
+
+The default install of rkhunter is set to report issues daily.
