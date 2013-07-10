@@ -134,13 +134,13 @@ Screen is installed by default.
 Once screen is installed a session can be created with:
 
 
-    # screen -DR serveradmin1
+    # screen -DR initialsetup
 
 
 If the session is dropped then it can be picked up again with the same command.
 
 
-    # screen -DR serveradmin1
+    # screen -DR initialsetup
 
 
 ## Update packages
