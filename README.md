@@ -493,3 +493,19 @@ Install rkhunter with:
     root@server1:~# apt-get install rkhunter
 
 The default install of rkhunter is set to report issues daily.
+
+### Install administration tools
+
+There are many tools used by administrators when looking after a server.  Here is a basic list of tools which should be made available by default on Linux servers:
+
+* Midnight Commander - file manager
+* Emacs - High function editor
+* Vim - Editor
+* locate - tool for fast searching for files
+
+| Disttribution | Versions |
+| --- | --- |
+| Debian | All versions |
+| Ubuntu | All versions |
+
+    root@server1:~# apt-get install mc emacs vim locate
