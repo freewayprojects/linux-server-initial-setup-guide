@@ -499,7 +499,7 @@ The default install of rkhunter is set to report issues daily.
 There are many tools used by administrators when looking after a server.  Here is a basic list of tools which should be made available by default on Linux servers:
 
 * Midnight Commander - file manager
-* Emacs - High function editor
+* Emacs - Professional level editor
 * Vim - Editor
 * locate - tool for fast searching for files
 
