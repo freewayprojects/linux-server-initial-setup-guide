@@ -506,6 +506,14 @@ There are many tools used by administrators when looking after a server.  Here i
 | Disttribution | Versions |
 | --- | --- |
 | Debian | All versions |
-| Ubuntu | All versions |
 
     root@server1:~# apt-get install mc emacs vim locate
+
+| Disttribution | Versions |
+| --- | --- |
+| Ubuntu | All versions |
+
+On Ubuntu Vim is installed during the default installation.
+
+    root@server1:~# apt-get install mc emacs locate
+
