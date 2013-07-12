@@ -508,9 +508,8 @@ On Debian etckeeper is set to use git by default - even if git is not installed.
 
 Then changes to any configuration files can be tracked with:
 
-    root@server1:~# cd /etc/
-    root@server1:~# git status
-    root@server1:~# git log    
+    root@server1:~# git --work-tree=/etc status
+    root@server1:~# git --work-tree=/etc log    
 
 | Disttribution | Versions |
 | --- | --- |
