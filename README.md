@@ -494,6 +494,37 @@ Install rkhunter with:
 
 The default install of rkhunter is set to report issues daily.
 
+### Install monitoring of configuration files.
+
+It is important to monitor any changes which are made to the configuration files.  There are many tools which carry out this function.  The tool etckeeper is one of the easiest to set up and puts all the configuration files under version control.
+
+| Disttribution | Versions |
+| --- | --- |
+| Debian | All versions |
+
+On Debian etckeeper is set to use git by default - even if git is not installed.  So, to install etckeeper run:
+
+    root@server1:~# apt-get install etckeeper git-core
+
+Then changes to any configuration files can be tracked with:
+
+    root@server1:~# cd /etc/
+    root@server1:~# git status
+    root@server1:~# git log    
+
+| Disttribution | Versions |
+| --- | --- |
+| Ubuntu | All versions |
+
+On Ubuntu the versioning system Bazaar is used by default.  The repository can be switched to using git if necessary.
+
+    root@server1:~# apt-get install etckeeper
+
+Then changes to any configuration files can be tracked with:
+
+    root@server1:~# bzr status /etc
+    root@server1:~# bzr log /etc
+
 ### Install administration tools
 
 There are many tools used by administrators when looking after a server.  Here is a basic list of tools which should be made available by default on Linux servers:
