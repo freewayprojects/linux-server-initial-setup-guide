@@ -390,8 +390,8 @@ To prevent the logging in over ssh as root and to restrict the logins to only th
 
 should be edited and the following lines edited/added:
 
-    PermitRootLogin no
-    AllowUsers admin
+    PermitRootLogin without-password
+    AllowUsers root serveradmin
 
 The the SSH server should be restarted with:
 
