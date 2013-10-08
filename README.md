@@ -20,7 +20,7 @@ The initial Linux server installation should have been completed.  This could be
 The main points about the server which should already have been set up are:
 
 * Linux base operating system installed.
-* BIOS clock set correctly.
+* BIOS clock set correctly and server datetime set correct within a couple of minutes.
 * SSH server installed and available
 * Initial administration user created.  This user will be used to login to the server and is separate from the root user.
 * Network address configured.
