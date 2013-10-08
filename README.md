@@ -401,15 +401,19 @@ Once these packages have been installed the admin user will be warned when they 
 
 ### Harden the SSH server
 
-The SSH server can be made more secure by ensuring that the root user can not log in with a password.
+The SSH server can be made more secure by ensuring that the root user can not log in with a password but can only login using an SSH key.
 
 Also, the accounts which can actually log in to the server can be restricted.
+
+Before restricting the root login over SSH to be by key only it would be best to copy a key from the client machine to the server.  This can be carried out on the client by using ssh-copy-id.
+
+    dev@workstation1:~$ ssh-copy-id root@server1.example.com
 
 | Disttribution | Versions |
 | --- | --- |
 | Debian | All versions |
 
-To prevent the logging in over ssh as root and to restrict the logins to only the admin user the file 
+The following changes will restrict password logins to the admin account only and will restrict the root login to be via SSH key only.
 
     /etc/ssh/sshd_config
 
