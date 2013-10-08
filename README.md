@@ -184,6 +184,30 @@ After this initial package update it is a good idea to check that the server reb
 
     root@server1:~# shutdown -r now
 	
+## Testing the RAM
+
+### memtest86++
+
+After the installation of the server operating system the mempry should have been tested using memtest86++.  This has the advantage of testing all of the RAM memory.
+
+### memtester
+
+It is also possible to test the RAM with memtester when logged in over SSH.  This is not able to test all of the memory but will at least provide a further check of the RAM.
+
+| Disttribution | Versions |
+| --- | --- |
+| Debian | All versions |
+| Ubuntu | All versions |
+
+Install memtester with:
+
+    root@server1:~# apt-get -s install memtester
+
+and then run memtester with 
+
+    root@server1:~# memtester 12 1
+
+
 ## Testing the hard disks
 
 The server memory should have been tested when the operating system was installed.  At this point it is an idea to test the hard disks.
