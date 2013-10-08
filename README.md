@@ -27,7 +27,7 @@ The main points about the server which should already have been set up are:
 * The hostname, domain and DNS should be set up so that the server has its FQDN available via DNS.  This may just be available on a LAN.
 * If necessary the reverse IP should be set up as certain services need to have the reverse IP working correctly.
 
-Basically, the administrator should be able to login to the server over SSH to carry out the intial setup.  This is normally the point at which a hardware server has been put into a rack or located at its permanent location - or when a VM has been built and is available over a network.
+Basically, the administrator should be able to login to the server over SSH to carry out this intial setup.  This is normally the point at which a hardware server has been put into a rack or located at its permanent location - or when a VM has been built and is available over a network.
 
 # Setup steps
 
