@@ -315,7 +315,7 @@ Install chrony with:
 
 After chrony has been installed edit the file
 
-    /etc/chrony.conf
+    /etc/chrony/chrony.conf
 
 and set the server lines to be 
 
