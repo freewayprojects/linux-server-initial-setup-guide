@@ -422,11 +422,16 @@ should be edited and the following lines edited/added:
     PermitRootLogin without-password
     AllowUsers root serveradmin
 
-The the SSH server should be restarted with:
+Also, the following lines should be added on most servers.  TCP or agent forwarding is unlikely to be needed.  Please note - do not necessarily add this to a LAMP development server which will be using xdebug as SSH forwarding may be needed in that case.
+
+    AllowTcpForwarding no
+    AllowAgentForwarding no
+
+After editing sshd_config the the SSH server should be restarted with:
 
     root@server1:~# /etc/initi.d/ssh restart
 
-Administration of the server should be carried out by logging in as the admin user and using su to carry out root tasks.
+Administration of the server should be carried out by logging in as the admin user and using 'su -' to carry out root tasks.
 
 | Disttribution | Versions |
 | --- | --- |
