@@ -422,7 +422,7 @@ should be edited and the following lines edited/added:
     PermitRootLogin without-password
     AllowUsers root serveradmin
 
-Also, the following lines should be added on most servers.  TCP or agent forwarding is unlikely to be needed.  Please note - do not necessarily add this to a LAMP development server which will be using xdebug as SSH forwarding may be needed in that case.
+Also, the following lines should be added on most servers.  TCP or agent forwarding is unlikely to be needed and can be exploited even if a user account has been set to /bin/false or /usr/sbin/nologin.  Please note - do not necessarily add this to a LAMP development server which will be using xdebug as SSH forwarding may be needed in that case.
 
     AllowTcpForwarding no
     AllowAgentForwarding no
