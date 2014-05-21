@@ -429,7 +429,7 @@ Also, the following lines should be added on most servers.  TCP or agent forward
 
 After editing sshd_config the the SSH server should be restarted with:
 
-    root@server1:~# /etc/initi.d/ssh restart
+    root@server1:~# /etc/init.d/ssh restart
 
 Administration of the server should be carried out by logging in as the admin user and using 'su -' to carry out root tasks.
 
