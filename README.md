@@ -464,6 +464,27 @@ to
 
     MAILON="upgrade"
 
+### Alternatively - enable automatice security updates
+
+For non-critical servers it may be best to enable automatic updates.
+
+| Disttribution | Versions |
+| --- | --- |
+| Debian | All versions |
+| Ubuntu | All versions |
+
+    root@server1:~# apt-get install unattended-upgrades apt-listchanges
+    root@server1:~# dpkg-reconfigure -plow unattended-upgrades
+
+Then edit
+
+    /etc/apt/apt.conf.d/50unattended-upgrades
+   
+ and set 
+ 
+    Unattended-Upgrade::Mail "root";
+    Unattended-Upgrade::Automatic-Reboot "true";
+
 ### Monitor the log files
 
 The log files on the server should be regularly monitored so problems can be identified.  It is best if an agregation system can be used to summarise the log files for easier interpretation.
