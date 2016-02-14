@@ -680,3 +680,16 @@ To monitor the hard drives:
     # apt-get install smartmontools
     # munin-node-configure --shell | sh
 
+# Monitoring the hard drives
+
+If Smartmontools is installed then we can have it regularly testing the hard drives.
+
+| Disttribution | Versions |
+| --- | --- |
+| Debian | 8 |
+
+In /etc/default/smartmontools set
+
+    start_smartd=yes
+    
+    
