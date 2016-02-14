@@ -602,3 +602,81 @@ On Ubuntu Vim is installed during the default installation.
 
     root@server1:~# apt-get install mc emacs locate
 
+# Installing LAMP server
+
+| Disttribution | Versions |
+| --- | --- |
+| Debian | All versions |
+
+LAMP packages were installed by running:
+
+    root@server1:~# apt-get install apache2-mpm-itk mysql-server php5 php5-mysql
+    root@server1:~# apt-get install php5-intl php5-curl php5-gd php5-mcrypt php5-cli
+    root@server1:~# apt-get install php-apc
+    root@server1:~# a2enmod rewrite
+    root@server1:~# apache2ctl restart
+
+MySQL was set up to use the my-huge.cnf file.  This was then edited.
+
+In the [mysqld] sections the line:
+
+    expire_logs_days        = 1
+
+was added to the [mysqld] section.
+
+# Munin install
+
+Munin is a great way to see the server perfomance and resource usage over time.  If a LAMP server has been set up then Munin is a very useful tool to have.
+
+| Disttribution | Versions |
+| --- | --- |
+| Debian | 8 |
+
+    root@server1:~# apt-get install libcgi-fast-perl libapache2-mod-fcgid
+    root@server1:~# apt-get install munin
+
+In the Apache configuration file we want to allow external access to the Munin graphs - but for an authorised user only.
+
+Set up a pasword file with:
+
+    # htpasswd -c /etc/munin/munin-htpasswd munin
+
+Then in /etc/munin/apache24.conf
+
+Add in:
+
+        # Require local                                                                           
+        AuthType Basic
+        AuthName "Protected area"
+        AuthUserFile /etc/munin/munin-htpasswd
+        Require valid-user
+
+Some extra plugins should be enabled for Munin to check other services - specifically Apache and MySQL.
+
+We need a couple of extra packages.
+
+This will enhance the display of the graphs.
+
+    # apt-get install libcgi-fast-perl libapache2-mod-fcgid
+
+NB- This does not seem to be working correctly yet.
+
+This will enable the MySQL plugins:
+
+    # apt-get install libcache-cache-perl
+    # ln -s /usr/share/munin/plugins/mysql_* /etc/munin/plugins
+
+Actually - to get all MySQL plugins working use:
+
+    # munin-node-configure --shell | sh
+
+This will get the Apache plugins working:
+
+    # apt-get install libwww-perl 
+    # ln -s /usr/share/munin/plugins/apache_* /etc/munin/plugins
+
+To monitor the hard drives:
+
+    # apt-get install smartmontools
+    # munin-node-configure --shell | sh
+
