@@ -384,21 +384,6 @@ for any error messages.
 
 ## Hardening the servers
 
-### Removing insecure packages and services
-
-There are some default packages which should be removed from standard Linux servers to harden the server.
-
-| Disttribution | Versions |
-| --- | --- |
-| Debian | All versions |
-| Ubuntu | All versions |
-
-On Debian and derivatives the easiest way to remove insecure services and clients is to install two packages which carry out the task automatically.
-
-    root@server1:~# apt-get install harden-servers harden-clients
-
-Once these packages have been installed the admin user will be warned when they are going to install a package which is considered insecure.
-
 ### Harden the SSH server
 
 The SSH server can be made more secure by ensuring that the root user can not log in with a password but can only login using an SSH key.
