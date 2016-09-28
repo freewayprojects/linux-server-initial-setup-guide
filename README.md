@@ -116,6 +116,7 @@ If necessary the server datetime can be corrected.
 | --- | --- |
 | Debian | All versions |
 | Ubuntu | All versions |
+| Centos | 7.x |
 
 
     # date 070413462013
@@ -143,6 +144,12 @@ The tool [Screen](http://www.gnu.org/software/screen/) means that commands can b
 
 Screen is installed by default.
 
+| Disttribution | Versions |
+| --- | --- |
+| Centos | 7.x |
+
+    # yum install screen
+
 ### Using Screen
 
 Once screen is installed a session can be created with:
@@ -161,7 +168,7 @@ If the session is dropped then it can be picked up again with the same command.
 
 It's important to make sure that all the server packages are up-to-date.  This is obviously very dependent on the distribution of Linux used - but effectively all Linux distributions use a system of software and package management.
 
-| Disttribution | Versions |
+| Distribution | Versions |
 | --- | --- |
 | Debian | All versions |
 | Ubuntu | All versions |
@@ -184,6 +191,12 @@ And then update all packages with:
 
 NB - 'dist-upgrade' is preferred to 'upgrade' as it should handle dependencies better.
 
+| Distribution | Versions |
+| --- | --- |
+| Centos | 7.x |
+
+    # yum update
+
 ## Check server reboots
 
 After this initial package update it is a good idea to check that the server reboots OK and that there are no issues with kernels etc.
@@ -196,6 +209,12 @@ After this initial package update it is a good idea to check that the server reb
 | Ubuntu | All versions |
 
     root@server1:~# shutdown -r now
+
+| Distribution | Versions |
+| --- | --- |
+| Centos | 7.x |
+
+    # reboot
 	
 ## Testing the RAM
 
@@ -237,6 +256,7 @@ This test will carried out as a quick test to see if the writing speed of the ha
 | --- | --- |
 | Debian | All versions |
 | Ubuntu | All versions |
+| Centos | 7.x |
 
     root@server1:~# dd bs=1M count=512 if=/dev/zero of=test conv=fdatasync
 
@@ -362,6 +382,12 @@ Install Postfix, Procmail and the 'mail' command with:
 NB - For default Debian this will remove the Exim email server.
 
 When asked for set the server to be an internet server as this provides full services and set the FQDN to the FQDN of the server which was set up during the OS installation.
+
+| Disttribution | Versions |
+| --- | --- |
+| Centos | 7.x |
+
+Postfix is installed by default.
 
 Then we will set all the accounts to use Maildir by default.  Edit /etc/postfix/main.cf and change the line beginning with mailbox_command to:
 
