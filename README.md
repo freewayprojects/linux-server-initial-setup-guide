@@ -48,6 +48,7 @@ and enter the root user password as set when Debian was installed.
 | Distribution | Versions |
 | --- | --- |
 | Ubuntu | All versions |
+| Centos | 7.x |
 
     admin@server1:~$ sudo su -
 
@@ -88,6 +89,18 @@ If the timezone is not correct then this should be corrected.
 
 
 Then follow the onscreen prompts.
+
+| Distribution | Versions |
+| --- | --- |
+| Centos | 7.x |
+
+Find out the time zones available with:
+
+    # timedatectl list-timezones | less
+    
+Then set the timezone with:
+
+    # timedatectl set-timezone America/Chicago
 
 ### Changing the server datetime
 
